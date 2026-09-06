@@ -1,0 +1,21 @@
+# Node dependencies
+node_modules/
+
+# Build outputs
+dist/
+.next/
+.vinext/
+out/
+
+# Wrangler local state
+.wrangler/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Environment files (never commit secrets)
+.env*
+
+# OS
+.DS_Store
+Thumbs.db

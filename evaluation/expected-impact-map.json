@@ -1,0 +1,53 @@
+{
+  "disclosure": "Synthetic reference map for experiment evaluation; not an architectural judgment.",
+  "baseline": {
+    "assumptions": ["A-001", "A-002", "A-003"],
+    "intents": ["I-001", "I-002", "I-003"],
+    "decisions": ["D-001", "D-002", "D-003"]
+  },
+  "change_events": [
+    {
+      "source": "S-004",
+      "expected_level": "review_recommended",
+      "expected_paths": [
+        ["S-004", "challenges", "A-003", "informs", "I-003", "informs", "D-003"]
+      ],
+      "must_preserve": "The material distinguishes unity from uniformity but does not prescribe a design response.",
+      "must_not_claim": "Employees reject a shared identity."
+    },
+    {
+      "source": "S-005",
+      "expected_level": "review_required",
+      "expected_paths": [
+        ["S-005", "challenges", "A-002", "informs", "D-002"]
+      ],
+      "secondary_relationship": ["S-005", "refines", "I-002"],
+      "must_preserve": "The constraint applies to recurring situations, not every visually connected setting.",
+      "must_not_claim": "Transparent boundaries must be removed."
+    },
+    {
+      "source": "S-006",
+      "expected_level": "review_recommended",
+      "expected_paths": [
+        ["S-006", "challenges", "A-001", "informs", "D-001"]
+      ],
+      "continuity_rule": ["S-006", "continues_to_support", "I-001"],
+      "must_preserve": "The intent remains plausible while the assumed mechanism deserves revision.",
+      "must_not_claim": "Informal encounter has no value."
+    },
+    {
+      "source": "S-007",
+      "expected_level": "monitor",
+      "expected_paths": [],
+      "must_not_claim": "A delivery-date change affects the approved design intent."
+    },
+    {
+      "source": "S-008",
+      "expected_level": "need_clarification",
+      "expected_paths": [],
+      "must_preserve": "More energy is an undefined stakeholder view.",
+      "must_not_claim": "The design should become more colourful, open, active, or informal."
+    }
+  ]
+}
+
