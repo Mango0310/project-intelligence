@@ -59,7 +59,7 @@ export async function ensureSchema() {
 export async function seedIfEmpty() {
   const db = getDb();
   const currentVersion = await db.prepare("SELECT version FROM case_versions WHERE id = 'harbourside-cultural-centre'").first<{ version: number }>();
-  if ((currentVersion?.version ?? 0) >= 4) return;
+  if ((currentVersion?.version ?? 0) >= 5) return;
 
   const sources: SourceRow[] = [
     { id: 'HC-S001', seq: 1, date: '01.12', title: '项目简报 / Project brief', titleEn: 'Project brief', body: '临港文化中心是一座虚构的滨水市民文化建筑，包含展览、演艺和公共阅读功能。项目希望把滨水公共空间、灵活的展览大空间和连续的公共动线组织在一起，为市民提供可自由穿行、可举办多种活动的公共文化场所。具体结构体系、疏散方案、立面材料和运营边界仍需专业团队确认。', role: '建立项目目标与初始边界 / Project goals and initial boundaries' },
@@ -97,9 +97,9 @@ export async function seedIfEmpty() {
   ];
 
   const assets = [
-    { sourceId: 'HC-S004', name: 'atrium-circulation-section.svg', mimeType: 'image/svg+xml', assetUrl: '/case-assets/atrium-circulation-section.svg' },
-    { sourceId: 'HC-S005', name: 'long-span-structure-section.svg', mimeType: 'image/svg+xml', assetUrl: '/case-assets/long-span-structure-section.svg' },
-    { sourceId: 'HC-S006', name: 'waterfront-facade-elevation.svg', mimeType: 'image/svg+xml', assetUrl: '/case-assets/waterfront-facade-elevation.svg' },
+    { sourceId: 'HC-S004', name: 'atrium-circulation-section.png', mimeType: 'image/png', assetUrl: '/case-assets/atrium-circulation-section.png' },
+    { sourceId: 'HC-S005', name: 'long-span-structure-section.png', mimeType: 'image/png', assetUrl: '/case-assets/long-span-structure-section.png' },
+    { sourceId: 'HC-S006', name: 'waterfront-facade-elevation.png', mimeType: 'image/png', assetUrl: '/case-assets/waterfront-facade-elevation.png' },
   ];
 
   const batch: D1PreparedStatement[] = [];
@@ -116,7 +116,7 @@ export async function seedIfEmpty() {
   batch.push(db.prepare("DELETE FROM intents WHERE id LIKE 'LS-I%' OR id LIKE 'MX-I%'"));
   batch.push(db.prepare("DELETE FROM assumptions WHERE id LIKE 'LS-A%' OR id LIKE 'MX-A%'"));
   batch.push(db.prepare("DELETE FROM decisions WHERE id LIKE 'LS-D%' OR id LIKE 'MX-D%'"));
-  batch.push(db.prepare("INSERT INTO case_versions (id, version, updated_at) VALUES ('harbourside-cultural-centre', 4, datetime('now')) ON CONFLICT(id) DO UPDATE SET version=excluded.version, updated_at=excluded.updated_at"));
+  batch.push(db.prepare("INSERT INTO case_versions (id, version, updated_at) VALUES ('harbourside-cultural-centre', 5, datetime('now')) ON CONFLICT(id) DO UPDATE SET version=excluded.version, updated_at=excluded.updated_at"));
   await db.batch(batch);
 }
 
