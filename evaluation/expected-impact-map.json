@@ -1,53 +1,72 @@
 {
-  "disclosure": "Synthetic reference map for experiment evaluation; not an architectural judgment.",
+  "disclosure": "虚构案例的模拟参考图，仅用于实验评测；不是建筑、消防、结构、机电或工程判断。所有材料均为明确标注的模拟内容，不代表真实客户或真实项目。",
   "baseline": {
-    "assumptions": ["A-001", "A-002", "A-003"],
-    "intents": ["I-001", "I-002", "I-003"],
-    "decisions": ["D-001", "D-002", "D-003"]
+    "assumptions": ["HC-A001", "HC-A002", "HC-A003"],
+    "intents": ["HC-I001", "HC-I002", "HC-I003"],
+    "decisions": ["HC-D001", "HC-D002", "HC-D003"]
+  },
+  "multimodal_test_04": {
+    "asset": "app/public/case-assets/test-04-atrium-review.png",
+    "visible_facts": [
+      "图名为中庭使用复核图 / ATRIUM USE REVIEW",
+      "图中标有开放中庭、光井、公共活动区域、连续公共动线和两个出口方向",
+      "这是一张虚构案例示意图"
+    ],
+    "not_shown": [
+      "活动人数或空间容量",
+      "任何尺寸、面积或比例尺",
+      "出口数量以外的出口宽度或疏散能力",
+      "材料名称或型号",
+      "结构跨度、荷载或构件尺寸",
+      "消防或法规合规结论"
+    ],
+    "expected_reasoning": "无既往人工否决时：结合文字中的大型公共活动新要求，提出 HC-A001 需要专业复核并保留 HC-I001。存在针对同类触发理由的有效人工否决时：不得重复该路径，除非材料提供独立且实质性的新证据。两种情况下都不得把图中未显示的数据当作事实。",
+    "conditional_paths": {
+      "without_prior_rejection": ["HC-A001", "HC-I001", "HC-D001"],
+      "with_binding_prior_rejection_and_no_materially_new_evidence": []
+    },
+    "must_not_claim": "不得从图中编造人数、尺寸、面积、材料、结构参数、出口能力或合规结论。"
   },
   "change_events": [
     {
-      "source": "S-004",
+      "source": "HC-S004",
       "expected_level": "review_recommended",
       "expected_paths": [
-        ["S-004", "challenges", "A-003", "informs", "I-003", "informs", "D-003"]
+        ["HC-S004", "challenges", "HC-A001", "informs", "HC-I001", "informs", "HC-D001"]
       ],
-      "must_preserve": "The material distinguishes unity from uniformity but does not prescribe a design response.",
-      "must_not_claim": "Employees reject a shared identity."
+      "must_preserve": "连续公共动线的意图仍可保留；客户新理解只挑战疏散与消防的技术假设。",
+      "must_not_claim": "必须取消连续开放中庭，或否定公共动线的设计意图。"
     },
     {
-      "source": "S-005",
-      "expected_level": "review_required",
-      "expected_paths": [
-        ["S-005", "challenges", "A-002", "informs", "D-002"]
-      ],
-      "secondary_relationship": ["S-005", "refines", "I-002"],
-      "must_preserve": "The constraint applies to recurring situations, not every visually connected setting.",
-      "must_not_claim": "Transparent boundaries must be removed."
-    },
-    {
-      "source": "S-006",
+      "source": "HC-S005",
       "expected_level": "review_recommended",
       "expected_paths": [
-        ["S-006", "challenges", "A-001", "informs", "D-001"]
+        ["HC-S005", "challenges", "HC-A002", "informs", "HC-I002", "informs", "HC-D002"]
       ],
-      "continuity_rule": ["S-006", "continues_to_support", "I-001"],
-      "must_preserve": "The intent remains plausible while the assumed mechanism deserves revision.",
-      "must_not_claim": "Informal encounter has no value."
+      "must_preserve": "灵活大空间的意图仍可保留；工程新边界只挑战大跨度结构的技术假设。",
+      "must_not_claim": "必须取消大跨度结构体系，或否定灵活空间的意图。"
     },
     {
-      "source": "S-007",
+      "source": "HC-S006",
+      "expected_level": "review_recommended",
+      "expected_paths": [
+        ["HC-S006", "challenges", "HC-A003", "informs", "HC-I003", "informs", "HC-D003"]
+      ],
+      "must_preserve": "滨水公共可达的意图仍可保留；规范新要求只挑战幕墙材料的技术假设。",
+      "must_not_claim": "必须取消滨水幕墙系统，或否定滨水可达的意图。"
+    },
+    {
+      "source": "HC-S007",
       "expected_level": "monitor",
       "expected_paths": [],
-      "must_not_claim": "A delivery-date change affects the approved design intent."
+      "must_not_claim": "家具到货时间变化影响设计意图或设计决定。"
     },
     {
-      "source": "S-008",
+      "source": "HC-S008",
       "expected_level": "need_clarification",
       "expected_paths": [],
-      "must_preserve": "More energy is an undefined stakeholder view.",
-      "must_not_claim": "The design should become more colourful, open, active, or informal."
+      "must_preserve": "\"更有弹性\"是一个未定义的诉求，系统应请求澄清。",
+      "must_not_claim": "系统自行解释\"弹性\"的含义并据此修改设计意图或决定。"
     }
   ]
 }
-

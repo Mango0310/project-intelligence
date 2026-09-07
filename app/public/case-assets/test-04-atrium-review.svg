@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#f4f1e9"/>
+  <style>
+    text{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#183d35}
+    .title{font-size:30px;font-weight:700}.sub{font-size:17px;fill:#61726c}
+    .label{font-size:18px;font-weight:700}.en{font-size:13px;fill:#65766f;letter-spacing:.7px}.note{font-size:16px;fill:#fff}
+    .outline{stroke:#234a40;stroke-width:6;fill:none}.floor{stroke:#6f867e;stroke-width:3;fill:none}
+    .route{stroke:#c6843d;stroke-width:8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .exit{stroke:#3979a9;stroke-width:5;fill:none}.leader{stroke:#7b8b86;stroke-width:2;fill:none}
+  </style>
+  <text x="70" y="65" class="title">中庭使用复核图 / ATRIUM USE REVIEW</text>
+  <text x="70" y="98" class="sub">测试 04 · 虚构案例示意图 / TEST 04 · SYNTHETIC CASE DIAGRAM</text>
+
+  <line x1="115" y1="760" x2="1285" y2="760" class="outline"/>
+  <line x1="170" y1="175" x2="170" y2="760" class="outline"/>
+  <line x1="1230" y1="175" x2="1230" y2="760" class="outline"/>
+  <rect x="470" y="170" width="460" height="590" fill="#e0ebe5" stroke="#234a40" stroke-width="5"/>
+
+  <g class="floor">
+    <line x1="170" y1="250" x2="470" y2="250"/><line x1="930" y1="250" x2="1230" y2="250"/>
+    <line x1="170" y1="350" x2="470" y2="350"/><line x1="930" y1="350" x2="1230" y2="350"/>
+    <line x1="170" y1="450" x2="470" y2="450"/><line x1="930" y1="450" x2="1230" y2="450"/>
+    <line x1="170" y1="550" x2="470" y2="550"/><line x1="930" y1="550" x2="1230" y2="550"/>
+    <line x1="170" y1="650" x2="470" y2="650"/><line x1="930" y1="650" x2="1230" y2="650"/>
+  </g>
+
+  <rect x="540" y="525" width="320" height="150" rx="18" fill="#d9a664" opacity=".30" stroke="#b3752e" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="608" y="592" class="label">公共活动区域</text>
+  <text x="615" y="619" class="en">PUBLIC EVENT ZONE</text>
+
+  <path d="M265 690 L430 610 L535 650 L700 705 L865 650 L970 610 L1135 690" class="route"/>
+  <circle cx="265" cy="690" r="11" fill="#c6843d"/><circle cx="1135" cy="690" r="11" fill="#c6843d"/>
+  <text x="525" y="790" class="label">连续公共动线</text>
+  <text x="555" y="807" class="en">CONTINUOUS PUBLIC ROUTE</text>
+
+  <path d="M585 210 Q700 135 815 210 L815 325 Q700 275 585 325 Z" fill="#75a8c8" opacity=".25"/>
+  <text x="654" y="238" class="label">光井</text>
+  <text x="647" y="262" class="en">LIGHT WELL</text>
+
+  <path d="M245 720 L185 720" class="exit"/><polygon points="175,720 198,707 198,733" fill="#3979a9"/>
+  <path d="M1155 720 L1215 720" class="exit"/><polygon points="1225,720 1202,707 1202,733" fill="#3979a9"/>
+  <text x="183" y="700" class="en">EXIT DIRECTION</text><text x="1080" y="700" class="en">EXIT DIRECTION</text>
+
+  <path d="M1000 390 L900 475" class="leader"/>
+  <text x="1010" y="370" class="label">开放中庭</text>
+  <text x="1010" y="395" class="en">OPEN ATRIUM</text>
+
+  <rect x="70" y="810" width="1260" height="50" rx="10" fill="#183d35"/>
+  <text x="95" y="842" class="note">图中未提供：人数、尺寸、材料、结构跨度、出口能力或合规结论 / NO NUMERIC OR COMPLIANCE DATA SHOWN</text>
+</svg>

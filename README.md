@@ -8,7 +8,7 @@ The working principle is:
 
 > AI surfaces → Human judges → System preserves reasoning
 
-当前案例是虚构的生命科学转化研发中心，用于测试来源追溯、跨材料影响推理、不确定性、误报、人工否决和多轮变化后的决策连续性。
+当前案例是虚构的滨水文化中心（临港文化中心）。项目材料全部为明确标注的模拟内容，用于测试 AI 能否发现变化对既有判断的影响。研究背景来自 M Moser 公开的 AI 实践。
 
 ## Frozen MVP scope
 
@@ -28,10 +28,8 @@ It is not a project management system, an architectural design generator, or an 
 ## Repository structure
 
 - `docs/product-definition.md` — stable product and human–AI boundary.
-- `case-study-life-sciences/manifest.md` — active synthetic case, source sequence, and disclosure.
-- `case-study-life-sciences/materials/` — active project material introduced over time.
-- `case-study-life-sciences/expected-impact-map.json` — hidden reference relationships for evaluation.
-- `case-study/` — archived early workplace-case draft retained for research history.
+- `case-study-harbourside/manifest.md` — 虚构案例、研究背景与模拟条件的边界。
+- `case-study-harbourside/materials/` — 项目简报与模拟变化事件。
 - `evaluation/test-plan.md` — comparison and failure tests.
 
 ## Current stage
@@ -44,13 +42,13 @@ It is not a project management system, an architectural design generator, or an 
 4. 人工维持、修改、否决或要求补证据；
 5. “需要更多证据”保持为未完成事项；
 6. 人工修改写回当前设计意图；
-7. 全部判断保存在浏览器并可导出为结构化项目语境。
+7. 全部判断保存在 Cloudflare D1 并可导出为结构化项目语境。
 
-真实模型效果尚未完成正式评测；当前已完成的是模型接口与产品闭环，不能把预置案例结果当作模型准确性证据。
+已使用 qwen-vl-max 完成五组真实模型评测，覆盖正确影响、无关信息、模糊表达、图文理解和人工否决记忆。原始失败、无效运行、修复过程与复测结果均保存在 `evaluation/results.md`；预置案例关系只作为裁判基准，不作为模型准确性证据。
 
 ## 如何打开 / How to run
 
 - 双击项目根目录的 `启动平台.bat`。
 - 浏览器打开 `http://localhost:3000/`。
-- 在“分析新材料”中填写兼容 OpenAI API 的接口地址和模型名称。本地 Ollama 常用地址是 `http://localhost:11434/v1`。
-- 页面数据保存在当前浏览器。API 密钥只在当前页面内存中使用，不写入项目文件。
+- 在左下角填写兼容 OpenAI API 的接口地址、模型名称和密钥，点击“连接并识别模型”。本地 Ollama 常用地址是 `http://localhost:11434/v1`。
+- 项目材料与人工判断保存在 Cloudflare D1。API 密钥只在当前页面内存中使用，不写入项目文件。

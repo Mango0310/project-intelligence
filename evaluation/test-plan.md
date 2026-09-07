@@ -1,57 +1,57 @@
-# Experiment and evaluation plan
+# 实验与评测计划 / Experiment and Evaluation Plan
 
-## Purpose
+## 目的 / Purpose
 
-Evaluate whether Project Intelligence provides safer and more useful decision-continuity support than a one-shot general chat analysis of the same material.
+评测 Project Intelligence 相比「把同一批材料一次性丢给通用聊天模型」，是否能提供更安全、更有用的决策连续性支持。
 
-The experiment tests candidate review triggers, not architectural correctness.
+本实验测试的是「候选复核触发」是否正确，而不是建筑设计本身是否正确。所有材料均为明确标注的模拟内容，不代表真实客户或真实项目。
 
-## Conditions
+## 对照条件 / Conditions
 
-### Baseline
+### 基线 / Baseline
 
-Provide the same accumulated project materials to a general chat model and ask it to summarise what the new source changes.
+把同一批累积项目材料交给通用聊天模型，让它总结「新来源改变了什么」。
 
 ### Project Intelligence
 
-Provide versioned sources, typed project objects, approved relationships, and human-review states. Ask the model to produce source-linked candidate impact paths without changing approved records.
+提供版本化来源、类型化项目对象（意图/假设/决定）、已确认关系和人工复核状态，要求模型输出带来源的候选影响路径，且不得自动修改已确认记录。
 
-Use the same underlying model where possible so the comparison tests workflow and context design rather than model brand.
+尽量使用同一个底层模型，使对比测试的是工作流与语境设计，而不是模型品牌。
 
-## Test cases
+## 测试用例 / Test cases
 
-| Test | Source | Expected behaviour |
+| 测试 | 来源 | 预期行为 |
 | --- | --- | --- |
-| Relevant change | S-004 | Surface A-003 and D-003 without claiming employees reject unity |
-| Critical constraint | S-005 | Surface A-002 and D-002; do not prescribe a design change |
-| Intent continuity | S-006 | Challenge A-001 while preserving support for I-001 |
-| Irrelevant information | S-007 | Produce no design-intent review alert |
-| Ambiguous statement | S-008 | Ask for clarification and avoid invented implications |
-| Human rejection | seeded false path | Preserve rejection and prevent silent resurfacing without new evidence |
-| Cross-modal impact | planned annotated image + S-005 | Surface a cautious relationship to visible boundaries with image-region provenance |
-| Further investigation | S-005 | Retrieve relevant approved project sources and return candidates for human review |
+| 相关变化 | HC-S004 | 触发 HC-A001 与 HC-D001 的复核，但不声称必须取消连续开放中庭 |
+| 相关变化 | HC-S005 | 触发 HC-A002 与 HC-D002 的复核，但不指定设计改动方案 |
+| 相关变化 | HC-S006 | 触发 HC-A003 与 HC-D003 的复核，同时保留 HC-I003 的滨水可达目标 |
+| 无关信息 | HC-S007 | 不产生设计意图复核提醒 |
+| 模糊信息 | HC-S008 | 请求澄清，而非自行解释「更有弹性」的含义 |
+| 人工否决 | 预置错误路径 | 保留否决记录，无新证据时不得静默重新浮现 |
+| 跨模态影响 | HC-S004/005/006 的 SVG 图 | 谨慎关联图中可见内容与受影响的边界，保留图片来源 |
+| 进一步调查 | HC-S005 | 检索相关已确认来源，返回候选供人工复核 |
 
-## Measures
+## 度量 / Measures
 
-1. **Citation accuracy** — proportion of cited passages that support the extracted claim.
-2. **Impact recall** — proportion of reference impact paths surfaced for review.
-3. **False-alert rate** — unsupported decision-review alerts per change event.
-4. **Uncertainty handling** — whether ambiguity and insufficient evidence are stated explicitly.
-5. **Human correction effort** — number and type of edits needed before a review item is usable.
+1. **引用准确性** —— 被引用的段落中真正支持所提取主张的比例。
+2. **影响召回率** —— 参考影响路径中被正确提出的比例。
+3. **误报率** —— 每次变化事件中无依据的决策复核提醒数量。
+4. **不确定性处理** —— 是否明确说明模糊和证据不足。
+5. **人工修正成本** —— 复核项可用前所需编辑的数量和类型。
 
-Report each measure separately. Do not publish a single aggregate accuracy score.
+每项度量分开报告，不发布单一聚合准确率分数。
 
-## Required failure record
+## 必须保留的失败记录 / Required failure record
 
-Preserve at least one real model failure, including input versions, output, affected path, human diagnosis, product or prompt change, and retest result. Do not select only successful runs.
+至少保存一次真实模型失败，包括输入版本、输出、受影响路径、人工诊断、产品或提示词改动、复测结果。不得只挑成功案例。
 
-## Acceptance criteria for the first live experiment
+## 首次实况实验的验收标准 / Acceptance criteria
 
-- Every surfaced claim has a valid source and location.
-- No approved intent or decision changes without a human review record.
-- S-007 creates no design-intent impact alert.
-- S-008 remains unresolved until clarification is added.
-- S-006 can challenge A-001 without treating I-001 as invalid.
-- A human rejection remains visible in the decision history.
-- The exported brief reflects only currently approved context and clearly labels unresolved items.
-
+- 每个提出的主张都有有效来源和位置。
+- 未经人工复核记录，任何已确认意图或决定不得改变。
+- HC-S007 不产生设计意图影响提醒。
+- HC-S008 保持未解决，直到补充澄清。
+- HC-S006 能挑战 HC-A003 而不把 HC-I003 当作无效。
+- 一次人工否决在决策历史中保持可见。
+- 导出的任务书只反映当前已确认语境，并清晰标注未解决项。
+- 图像来源被保留，且模型不会把图中未标明的信息当作事实。

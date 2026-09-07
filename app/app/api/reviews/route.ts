@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { ensureSchema, seedIfEmpty, upsertReview } from '@/lib/db';
+import { ensureSchema, seedIfEmpty, upsertReview, deleteReview } from '@/lib/db';
 
 type ReviewInput = {
   sourceId?: string; level?: string; title?: string; titleEn?: string;
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     }
     await ensureSchema();
     await seedIfEmpty();
-    const id = `CR-${Date.now().toString().slice(-4)}`;
+    const id = `CR-${Date.now()}`;
     await upsertReview({
       id,
       sourceId: body.sourceId.trim(),
@@ -34,5 +34,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ reviewId: id });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : '保存候选复核项失败。' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const reviewId = new URL(request.url).searchParams.get('reviewId');
+    if (!reviewId?.startsWith('CR-')) return NextResponse.json({ error: '无效的复核编号。' }, { status: 400 });
+    await ensureSchema();
+    await seedIfEmpty();
+    await deleteReview(reviewId);
+    return NextResponse.json({ status: 'deleted' });
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : '删除复核项失败。' }, { status: 500 });
   }
 }

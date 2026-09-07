@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     if (body.action === 'revise') {
       const path = JSON.parse(review.path) as string[];
-      const intentId = path.find((node) => node.startsWith('LS-I'));
+      const intentId = path.find((node) => node.startsWith('HC-I'));
       if (intentId) await updateIntentStatement(intentId, body.updatedStatement!.trim());
     }
 

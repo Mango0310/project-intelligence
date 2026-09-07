@@ -19,10 +19,10 @@ Project Intelligence helps a team recover two forms of context:
 | Observed evidence | A traceable observation or recorded result | research finding with method and scope |
 | Stakeholder view | A person's stated belief, priority, or concern | sponsor's view of project value |
 | Constraint | A condition that limits possible responses | confidentiality or retained-material requirement |
-| Assumption | A proposition temporarily used in reasoning | a proposed cause of a workplace problem |
+| Assumption | A proposition temporarily used in reasoning | a smoke-control or structural premise used at concept stage |
 | Interpretation | A team reading of what the material may mean | a possible implication requiring review |
-| Design intent | An approved outcome the design should support | support purposeful exchange across disciplines |
-| Design decision | A recorded choice informed by current intent | develop a central shared review setting |
+| Design intent | An approved outcome the design should support | preserve continuous public circulation through atrium and light wells |
+| Design decision | A recorded choice informed by current intent | adopt a continuous open atrium and light-well sequence |
 | Review | A human judgment about an extraction or impact | keep, revise, reject, investigate |
 
 Stakeholder statements are not promoted to verified evidence automatically. A source can support multiple, even conflicting, views.
